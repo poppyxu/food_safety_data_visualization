@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Safety Data Analysis and Visualization</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Food Safety Data Analysis and Visualization</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Yingjing Xu<sup class="small-sup">1</sup>,<sup class="corresponding-author">*</sup>
+            </span>
+            <span class="author-block">
+              Ying Tang<sup class="small-sup">2</sup>,<sup class="corresponding-author">‡</sup>
+            </span>
+            
+          </div>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup class="small-sup">1</sup>Zhejiang University,</span>
+            <span class="author-block"><sup class="small-sup">2</sup>Zhejiang University of Technology</span>
+
+          </div>
+          
+          <div class="footnotes">
+            <sup class="small-sup">*</sup>Co-first authors.
+            <sup class="corresponding-author">‡</sup>Corresponding authors.
+          </div>
+          <!-- <div class="publication-authors">
+            <span class="author-block">Yingjing Xu, Zhejiang University, School of Software, Ningbo, China</span>
+            <span class="author-block">Xueyan Cai, Zhejiang University, Hangzhou, Zhejiang/China, China</span>
+            <span class="author-block">Zihong Zhou, Zhejiang University, Hangzhou, China</span>
+            <span class="author-block">Mengru Xue, Ningbo Research Institute, Zhejiang University, Ningbo, Ningbo, Zhejiang, China, mengruxue@zju.edu.cn</span>
+            <span class="author-block">Bo Wang, Department of Neurology, the Second Affiliated Hospital, Zhejiang University, Hangzhou, China</span>
+            <span class="author-block">Haotian Wang, Zhejiang University, Hangzhou, China, wanght816@zju.edu.cn</span>
+            <span class="author-block">Zhengke Li, Zhejiang University, Hangzhou, China</span>
+            <span class="author-block">Chentian Weng, Zhejiang University, Hangzhou, China, 22351214@zju.edu.cn</span>
+            <span class="author-block">Xiaofeng Ma, Zhejiang University, Hangzhou, China</span>
+            <span class="author-block">Wei Luo, Computer Science and Technology, Zhejiang University, Hangzhou, China, yaoch@zju.edu.cn</span>
+            <span class="author-block">Cheng Yao, Computer Science and Technology, Zhejiang University, Hangzhou, China, yaoch@zju.edu.cn</span>
+            <span class="author-block">Bo Lin, School of Software Technology, Zhejiang University, Ningbo, China Innovation Centre for Information, Binjiang Institute of Zhejiang University, Hangzhou, China</span>
+          </div> -->
+
+          
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 
+<div class="column has-text-centered">
+  <div class="publication-links"> -->
+    <!-- PDF Link. -->
+    <!-- <span class="link-block">
+      <a href="https://arxiv.org/pdf/2011.12948"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <i class="fas fa-file-pdf"></i>
+        </span>
+        <span>Paper</span>
+      </a>
+    </span> -->
+    <!-- <span class="link-block">
+      <a href="https://arxiv.org/abs/2011.12948"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <i class="ai ai-arxiv"></i>
+        </span>
+        <span>arXiv</span>
+      </a>
+    </span> -->
+    <!-- Video Link. -->
+    <!-- <span class="link-block">
+      <a href="https://www.bilibili.com/video/BV1jk4y1p7Kn"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <i class="fab fa-youtube"></i>
+        </span>
+        <span>Video</span>
+      </a>
+    </span> -->
+    <!-- Code Link. -->
+    <!-- <span class="link-block">
+      <a href="https://github.com/google/nerfies"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <i class="fab fa-github"></i>
+        </span>
+        <span>Code</span>
+        </a>
+    </span> -->
+    <!-- Dataset Link. -->
+    <!-- <span class="link-block">
+      <a href="https://github.com/google/nerfies/releases/tag/0.1"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">
+            <i class="far fa-images"></i>
+        </span>
+        <span>Data</span>
+        </a> 
+      </span> -->
+  <!-- </div> -->
+<!-- 
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+<div style="display: flex; justify-content: space-between;">
+            <img src="./static/images/project_food_safety_visualization/img9.jpg" alt="Nerfies Teaser" style="display: block; margin-left: auto; margin-right: auto; width: 75%; height: auto;">
+          
+          </div>
+  </div>
+</section> -->
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- 
+<section class="section">
+  <div class="container is-max-desktop"> -->
+    <!-- Abstract. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Hypomimia is a non-motor symptom of Parkinson's disease that manifests as delayed facial movements and expressions, along with challenges in articulation and emotion. Currently, subjective evaluation by neurologists is the primary method for hypomimia detection, and conventional rehabilitation approaches heavily rely on  verbal prompts from rehabilitation physicians. There remains a deficiency in accessible, user-friendly and scientifically rigorous assistive tools for hypomimia treatments. To address this, we introduce HypomimaCoach, an Action Unit (AU)-based digital therapy system for hypomimia detection and rehabilitation in Parkinson's disease. We employ Graph neural network (GNN) for hypomimia detection, modeling facial relationships based on AU features. For rehabilitation, we design a set of rehabilitation trainings based on AUs and provide patients with real-time feedbacks through additional AU recognization model, which guide them through their training routines. User study with seven PD patients and ten physicians confirme the system's usability, effectiveness, and acceptability, receiving positive feedbacks.
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  <!-- </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Introduction</h2>
+
+        <!-- Interpolating. -->
+        <!-- <h3 class="title is-4">Interpolating states</h3> -->
+        <div class="content has-text-justified">
+          <p>
+            With the improvement of detection technology and the wide application of Internet technology, the scale and types of food safety data continue to increase.Therefore, how to make good use of food safety data for analysis, and knowing the internal pattern inside the data, is the most important part of China’s food safety protection at this stage. This study will use the existing food unqualified data, using the current popular computer technology, mining the internal rules of food data, and reveal the internal association of food data.          </p>
+          </p>
+        </div>
+
+        <br/>
+
+        <!-- <div class="content has-text-centered">
+          <img id="replay-image" src="./static/images/pipeline.png" alt="Hypomimia Detection" style="width:75%; height:auto;">
+        </div> -->
+        <!--/ Re-rendering. -->
+
+      </div>
+
+    
+    </div>
+
+
+    <!--/ Animation. -->
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Data Processing</h2>
+
+        <!-- Interpolating. -->
+  
+        <div class="content has-text-justified">
+          <p>
+            Based on the dimensions and contents of food safety data, appropriate algorithms and big data technologies are selected to process and analyze them effectively. We design three different kinds of data processing tasks based on three different kinds of computer data processing tasks which are weight calculation, keyword extraction, and correlation analysis respectively. 
+          </p>
+          <p>
+            In terms of weight calculation, we want to explore the extent to which different additives contribute to food insecurity, we use the traditional entropy weight method based on data, the AHP method based on expert evaluation, and the improved AHP-EW method to calculate the weight results, and compare the results. In terms of keyword extraction, we want to know the keyword information of a particular province or a particular category, so we use three different methods of natural language processing techniques to get our keyword results. We use tf-idf method based on frequency, textrank method based on co-occurrence, and the machine learning method word2vec based on a high dimensional vector. In terms of correlation analysis, we want to explore the correlation among the food additives. We use the k-means algorithm to cluster features.
+          </p>
+          <br/>
+          </div>
+        <h2 class="title is-3">Weight Calculation Algorithms</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Combined with previous studies, this research calculates the weight of food additives from from objective and subjective point of view, and make comparisons in representation.  
+          </p>
+          <div class="content has-text-centered">
+            <div style="display: flex; justify-content: space-between;">
+              <img src="./static/images/project_food_safety_visualization/img1.jpg" alt="Image 1" style="width: 33%; height: auto;">
+              <img src="./static/images/project_food_safety_visualization/img2.jpg" alt="Image 2" style="width: 33%; height: auto;">
+              <img src="./static/images/project_food_safety_visualization/img3.jpg" alt="Image 3" style="width: 33%; height: auto;">
+            </div>
+            <div>Work flow of three weight calculation algorithms, which are EW, AHP, AHP-EW respectively.</div>
+        
+            <br/>
+          </div>
+        
+        </div>
+      
+
+
+        <h2 class="title is-3">Keyword Extraction Algorithms</h2>
+        <p>
+          For each province or category, there are some specific information about food safety, and we can extract these words to help people to raise awareness about the influence of food additives.
+        </p>
+        <div class="content has-text-centered">
+          <!-- <div style="display: flex; justify-content: space-between;">
+            <img src="./static/images/project_data_visualization/img5.jpg" alt="Nerfies Teaser" style="display: block; margin-left: auto; margin-right: auto; width: 75%; height: auto;">
+          
+          </div> -->
+
+
+          <div style="display: flex; justify-content: space-between;">
+            <img src="./static/images/project_food_safety_visualization/img4.jpg" alt="Image 1" style="width: 33%; height: auto;">
+            <img src="./static/images/project_food_safety_visualization/img5.jpg" alt="Image 2" style="width: 33%; height: auto;">
+            <img src="./static/images/project_food_safety_visualization/img6.jpg" alt="Image 3" style="width: 33%; height: auto;">
+          </div>
+          <div>Work flow of three keyword extraction algorithms, which are tf-idf, textrank, word2vec respectively.
+          
+            <br/>
+            <br/>
+          </div>
+        </div>
+
+
+
+
+        <h2 class="title is-3">Correlation Analysis Algorithm</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            For each category, there are several types of food additives, and we can use clustering algorithms to figure out there are correlations between those features.          </p>
+
+          </div>
+
+        <br/>
+
+      </div>
+    </div>
+
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Visualization Design</h2>
+        <div class="content has-text-centered">
+        <div style="display: flex; justify-content: space-between;">
+            <img src="./static/images/project_food_safety_visualization/img9.jpg" alt="Nerfies Teaser" style="display: block; margin-left: auto; margin-right: auto; width: 75%; height: auto;">
+          
+          </div>
+          <div>Visualization System</div>
+          </div>
+
+        <!-- Interpolating. -->
+  
+        <div class="content has-text-justified">
+          <p>
+            After processing the original dataset using the above method, we need to do visualization. System visualization includes text visualization, geographic location visualization, relational visualization. We use different types of charts on the web page to comprehensively show the data of multiple dimensions of information. In addition, we design a friendly way of interaction to bring a better user experience in the visualization system.          
+          </p>
+          <p>
+            Category pipeline: By switching the category on the left console, the user can get information about this food category information as shown
+          </p>     
+          <p>
+            Province pipeline: By switching the province on the map, the user can get information about the province information as shown.
+          </p>   
+        </div>
+
+
+        <br/>
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Risk Prediction</h2>
+          
+
+        <!-- Interpolating. -->
+  
+        <div class="content has-text-justified">
+          <p>
+            Based on previous work in food safety risk prediction, we train artificial intelligence model in the dataset we constructed and compare their effects. Firstly, we train the linear model, BP model and RBF model with the data of a specific food category according to the method in the paper. Next, we use all types of food data we constructed to train more general models to predict food risk with BP model, RBF model and transformer model respectively. 
+          </p>
+           
+        </div>
+
+
+        <br/>
+
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Conclusion</h2>
+          
+
+        <!-- Interpolating. -->
+  
+        <div class="content has-text-justified">
+          <p>
+            In this paper, a food safety visualization system is presented, which illustrates the internal law of data from spatial, textual, and relational dimensions. During data processing, we do several tasks such as keyword extraction, weight calculation, and clustering and present the results in the visualization system. In terms of weight calculation, we use AHP, EW, and AHP-EW to explore the importance of each additive. In terms of keyword extraction, we use tf-idf, textrank, and word2vec to extract the keywords of each category or province to illustrate the key information. In terms of clustering, we use k-means to explore the correlation among different features.
+          </p>
+          <p>
+            In addition, we use a machine learning model to predict the risk to food safety. In this paper, we train the linear model, BP, and RBF model for a specific category and compare their effectiveness. Besides, we train a more generalized model to predict the risk of food among all categories. The model has greater generalization ability and is more general, which can be applied to different food data to predict its risk value.          </p>
+
+          </p>           
+        </div>
+
+
+        <br/>
+
+      </div>
+    </div>
+
+    <!-- Concurrent Work. -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+<!-- 
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a> -->
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
